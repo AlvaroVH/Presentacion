@@ -1,0 +1,1 @@
+json.array! @cualquieras, partial: 'cualquieras/cualquiera', as: :cualquiera

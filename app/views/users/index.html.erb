@@ -1,0 +1,31 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:nomusuario) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:rut) %></th>
+      <th><%= model_class.human_attribute_name(:activo) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+       <td><%= user.nomusuario %></td>
+        <td><%= user.email %></td>
+        <td><%= user.rut %></td>
+        <td><%= user.activo %></td>
+        <td>
+         <%= link_to "Editar", edit_user_path(user) %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

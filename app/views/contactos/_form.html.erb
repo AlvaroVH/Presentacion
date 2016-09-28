@@ -1,0 +1,41 @@
+<%= form_for @contacto, :html => { :class => "form-horizontal contacto" } do |f| %>
+
+  <% if @contacto.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@contacto.errors.count, "error") %> prohibited this contacto from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @contacto.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nombre, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :nombre, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:nombre) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :telefono, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :telefono, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telefono) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                contactos_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

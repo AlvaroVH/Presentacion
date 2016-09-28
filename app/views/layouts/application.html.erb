@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biblio</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>              
+</div>
+  <%if user_signed_in?%>                         
+    <header>
+      <div class="containers", rows>
+                 <ul class="nav nav-tabs">
+                     <li><%=link_to 'Inicio', root_path %></li>
+                     <%if can? :read, @libros%>
+                      <li><%=link_to 'Libros',libros_path %></li>
+                      <%end%>
+                      <%if can? :read, @contacto%>
+                      <li><%=link_to 'Contacto',contactos_path %></li>
+                      <%end%>
+                      <%if can? :read, @usuarios%>
+                      <li><%=link_to 'Usuarios',users_index_path %></li>
+                      <%end%>
+                      <%if user_signed_in?%>
+                      <li><%=link_to 'Deslogear',destroy_user_session_path ,:method=> :delete%></li> 
+                       <%else%>
+                          <li><%=link_to 'Logear',new_user_session_path%></li>
+                      <%end%>                    
+                  </ul>
+              </div>
+      <div class="containers"> <%= yield%></div>
+      <!--<div class="containers">	
+      	<div class="izq" ><ul class="nav", cols>
+                    <li><%=link_to 'Usuarios', contactos_path %></li>
+                      <li><%=link_to 'Libros',libros_path %></li>
+                      <li><%=link_to 'Cuenta',root_path %></li>
+                      <li><%=link_to ' Otras cosas',welcome_segunda_path %></li>
+                  </ul></div> 
+         <div class="container"> <%= yield%></div>         
+      </div>
+    </header>-->
+    <%else%> 
+      <header>
+      <div class="containers", rows>
+                 <ul class="nav nav-tabs">
+                     <li><%=link_to 'Inicio', root_path %></li>
+                      <%if user_signed_in?%>
+                       <li><%=link_to 'Deslogear',destroy_user_session_path ,:method=> :delete%></li> 
+                       <%else%>
+                          <li><%=link_to 'Logear',new_user_session_path%></li>
+                      <%end%>                    
+                  </ul>
+              </div>
+      <div class="containers"> <%= yield%></div>
+    <%end%> 
+ <div class="containers">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  </div>     
+</body>
+</html>

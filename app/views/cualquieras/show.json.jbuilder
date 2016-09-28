@@ -1,0 +1,1 @@
+json.partial! "cualquieras/cualquiera", cualquiera: @cualquiera

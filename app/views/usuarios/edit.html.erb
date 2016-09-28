@@ -1,0 +1,11 @@
+<h1>Editing User</h1>
+
+<%= form_for(@userid) do |f|%>
+	<div class="field">
+	<%= f.label :activo%>
+	<%= f.text_field :activo%>
+	</div>
+	<div class="actions">
+	<%= f.submit 'Guardar'%>
+	</div>
+<%end%>	
